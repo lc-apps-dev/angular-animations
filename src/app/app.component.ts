@@ -44,6 +44,29 @@ import { Component } from '@angular/core';
       ]),
     ]),
 
+
+    trigger('list1', [
+      state('in', style({
+        opacity: 1,
+        transform: 'translateX(0)'
+      })),
+
+      transition('void => *', [
+        style({
+          opacity: 0,
+        transform: 'translateX(-100px)'
+        }),
+        animate(1000)
+      ]),
+
+      transition('* => void', [
+        animate(300, style({
+          opacity: 0,
+          transform: 'translateX(100px)'
+        }))
+      ]),
+    ]),
+
   ]
 })
 export class AppComponent {
@@ -64,6 +87,10 @@ export class AppComponent {
 
   onShrink() {
     this.wildState = 'shrunken';
+  }
+
+  onDelete(item) {
+    this.list.splice(this.list.indexOf(item), 1);
   }
 
 }
