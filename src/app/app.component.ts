@@ -33,7 +33,15 @@ import { Component } from '@angular/core';
       })),
       transition('normal => hightlited', animate(1000)),
       transition('hightlited => normal', animate(500)),
-      transition('shrunken <=> *', animate(500)),
+      transition('shrunken <=> *', [
+        style({
+          'background-color': 'orange',
+        }),
+        animate(500, style({
+          borderRadius: '50px'
+        })),
+        animate(500)
+      ]),
     ]),
 
   ]
